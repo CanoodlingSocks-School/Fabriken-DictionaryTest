@@ -12,7 +12,7 @@ namespace Fabriken
         {
             Dictionary<string, int> materials = new Dictionary<string, int>
             {
-                //{"Metal", 0 },
+                //TODO Implementera en check som kollar om en key med samma namn redan finns och sedan därefter anting ändrar value eller lägger till
                 //{"Rubber", 0 },
                 //{"Wood", 0 }
             };
@@ -20,7 +20,11 @@ namespace Fabriken
             while (loop)
             {
                 Console.Clear();
-                Console.WriteLine("Choose material to add: ");
+                foreach (var (key, value) in materials)
+                {
+                    Console.WriteLine(key + " : " + value);  //Visar högst upp vad som redan finns
+                }
+                Console.WriteLine("Choose material to add (Metal, Rubber or Wood): ");
                 string materialOption = Console.ReadLine();
                 if (materialOption == "Metal" || materialOption == "metal")
                 {
@@ -29,12 +33,19 @@ namespace Fabriken
 
                     materials.Add("Metal", numberOf);
 
-                    foreach (var (key, value) in materials)
+                    Console.WriteLine("\nDo you wish to add anything else? Y/N");
+                    ConsoleKeyInfo input = Console.ReadKey(false);
+                    
+                    if(input.Key == ConsoleKey.Y) 
                     {
-                        Console.WriteLine(key + " : " + value);
+                        continue;
+
                     }
+                    else
+                    { 
                     Console.ReadLine();
                     loop = false;
+                    }
                 }
                 else if (materialOption == "Rubber" || materialOption == "rubber")
                 {
@@ -43,12 +54,19 @@ namespace Fabriken
 
                     materials.Add("Rubber", numberOf);
 
-                    foreach (var (key, value) in materials)
+                    Console.WriteLine("\nDo you wish to add anything else? Y/N");
+                    ConsoleKeyInfo input = Console.ReadKey(false);
+
+                    if (input.Key == ConsoleKey.Y)
                     {
-                        Console.WriteLine(key + " : " + value);
+                        continue;
+
                     }
-                    Console.ReadLine();
-                    loop = false;
+                    else
+                    {
+                        Console.ReadLine();
+                        loop = false;
+                    }
                 }
                 else if (materialOption == "Wood" || materialOption == "wood")
                 {
@@ -57,16 +75,23 @@ namespace Fabriken
 
                     materials.Add("Wood", numberOf);
 
-                    foreach (var (key, value) in materials)
+                    Console.WriteLine("\nDo you wish to add anything else? Y/N");
+                    ConsoleKeyInfo input = Console.ReadKey(false);
+
+                    if (input.Key == ConsoleKey.Y)
                     {
-                        Console.WriteLine(key + " : " + value);
+                        continue;
+
                     }
-                    Console.ReadLine();
-                    loop = false;
+                    else
+                    {
+                        Console.ReadLine();
+                        loop = false;
+                    }
                 }
                 else
                 {
-                    Console.WriteLine("Didn't recognize command, be sure to write one of following options");
+                    Console.WriteLine("\nDidn't recognize command, be sure to write one of following options");
                     Console.WriteLine("Metal\nRubber\nWood\nPress any key to continue");
                     Console.ReadLine();
                     continue;
