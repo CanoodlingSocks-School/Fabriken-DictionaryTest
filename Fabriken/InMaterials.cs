@@ -24,10 +24,21 @@ namespace Fabriken
                 {
                     Console.WriteLine(key + " : " + value);  //Visar högst upp vad som redan finns
                 }
+
                 Console.WriteLine("Choose material to add (Metal, Rubber or Wood): ");
+                Console.WriteLine("\n                           Press P to Exit");
                 string materialOption = Console.ReadLine();
-                if (materialOption == "Metal" || materialOption == "metal")
+                
+
+                if (materialOption == "Metal"|| materialOption == "metal")
                 {
+                    if (materials.ContainsKey("Metal"))
+                    {
+                        Console.WriteLine("How many units of metal do you wanna add?");
+                        int newNumber = Convert.ToInt32(Console.ReadLine());
+                        materials["Metal"] = materials["Metal"]+ newNumber;
+                        continue;
+                    }
                     Console.WriteLine("How many units of metal do you wanna add?");
                     int numberOf = Convert.ToInt32(Console.ReadLine());
 
@@ -76,7 +87,7 @@ namespace Fabriken
                     materials.Add("Wood", numberOf);
 
                     Console.WriteLine("\nDo you wish to add anything else? Y/N");
-                    ConsoleKeyInfo input = Console.ReadKey(false);
+                    ConsoleKeyInfo input = Console.ReadKey();
 
                     if (input.Key == ConsoleKey.Y)
                     {
@@ -88,6 +99,10 @@ namespace Fabriken
                         Console.ReadLine();
                         loop = false;
                     }
+                } 
+                else if (materialOption == "p")
+                {
+                    loop = false;
                 }
                 else
                 {
