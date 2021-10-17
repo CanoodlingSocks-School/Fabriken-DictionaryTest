@@ -22,23 +22,25 @@ namespace Fabriken
                 Console.Clear();
                 foreach (var (key, value) in materials)
                 {
-                    Console.WriteLine(key + " : " + value);  //Visar högst upp vad som redan finns
+                    Console.WriteLine(key + " : " + value + "\n");  //Visar högst upp vad som redan finns
                 }
 
                 Console.WriteLine("Choose material to add (Metal, Rubber or Wood): ");
-                Console.WriteLine("\n                           Press P to Exit");
+                Console.WriteLine("\nType p to Exit");
                 string materialOption = Console.ReadLine();
                 
 
                 if (materialOption == "Metal"|| materialOption == "metal")
                 {
-                    if (materials.ContainsKey("Metal"))
+                    if (materials.ContainsKey("Metal"))  //Kollar om Key "Metal" redan finns
                     {
+                        Console.Clear();
                         Console.WriteLine("How many units of metal do you wanna add?");
                         int newNumber = Convert.ToInt32(Console.ReadLine());
                         materials["Metal"] = materials["Metal"]+ newNumber;
                         continue;
                     }
+                    Console.Clear();
                     Console.WriteLine("How many units of metal do you wanna add?");
                     int numberOf = Convert.ToInt32(Console.ReadLine());
 
@@ -60,6 +62,15 @@ namespace Fabriken
                 }
                 else if (materialOption == "Rubber" || materialOption == "rubber")
                 {
+                    if (materials.ContainsKey("Rubber"))  //Kollar om Key "Rubber" redan finns
+                    {
+                        Console.Clear();
+                        Console.WriteLine("How many units of rubber do you wanna add?");
+                        int newNumber = Convert.ToInt32(Console.ReadLine());
+                        materials["Rubber"] = materials["Rubber"] + newNumber;
+                        continue;
+                    }
+                    Console.Clear();
                     Console.WriteLine("How many units of rubber do you wanna add?");
                     int numberOf = Convert.ToInt32(Console.ReadLine());
 
@@ -81,6 +92,15 @@ namespace Fabriken
                 }
                 else if (materialOption == "Wood" || materialOption == "wood")
                 {
+                    if (materials.ContainsKey("Wood"))  //Kollar om Key "Wood" redan finns
+                    {
+                        Console.Clear();
+                        Console.WriteLine("How many units of wood do you wanna add?");
+                        int newNumber = Convert.ToInt32(Console.ReadLine());
+                        materials["Wood"] = materials["Wood"] + newNumber;
+                        continue;
+                    }
+                    Console.Clear();
                     Console.WriteLine("How many units of wood do you wanna add?");
                     int numberOf = Convert.ToInt32(Console.ReadLine());
 
